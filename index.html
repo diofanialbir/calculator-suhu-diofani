@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Konversi Suhu</title>
+
+    <!-- Menghubungkan ke file CSS -->
+    <link rel="stylesheet" href="css/style.css"> 
+</head>
+<!-- Halaman Awal -->
+  <div id="start-screen">
+    <header class="main-header">
+        <h1>Mulai Hitung Konversi</h1>
+    </header>
+    <button id="start-button" class="start-button">Start</button>
+</div>
+
+<!-- Menu Utama -->
+<main id="main-menu" style="display: none;">
+    <section>
+            <form id="temp-form">
+                <div class="input-group">
+                    <label for="input-unit">Pilih Satuan Suhu Input:</label>
+                    <select id="input-unit" required>
+                        <option value="Celsius">Celsius (&deg;C)</option>
+                        <option value="Fahrenheit">Fahrenheit (&deg;F)</option>
+                        <option value="Kelvin">Kelvin (K)</option>
+                        <option value="Rankine">Rankine (R&deg;)</option>
+                        <option value="Delisle">Delisle (&deg;De)</option>
+                        <option value="Newton">Newton (&deg;N)</option>
+                        <option value="Réaumur">Réaumur (&deg;R&eacute;)</option>
+                        <option value="Rømer">Rømer (&deg;R&oelig;)</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="main-input" id="input-label">Masukkan Suhu:</label>
+                    <input type="number" id="main-input" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="output-unit">Pilih Satuan Suhu Output:</label>
+                    <select id="output-unit" required>
+                        <option value="Fahrenheit">Fahrenheit (&deg;F)</option>
+                        <option value="Celsius">Celsius (&deg;C)</option>
+                        <option value="Kelvin">Kelvin (K)</option>
+                        <option value="Rankine">Rankine (R&deg;)</option>
+                        <option value="Delisle">Delisle (&deg;De)</option>
+                        <option value="Newton">Newton (&deg;N)</option>
+                        <option value="Réaumur">Réaumur (&deg;R&eacute;)</option>
+                        <option value="Rømer">Rømer (&deg;R&oelig;)</option>
+                    </select>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="bg-aquamarine">Konversi</button>
+                    <button type="reset" class="bg-green">Reset</button>
+                    <button type="button" class="bg-gray" id="reverse">Reverse</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Hasil Konversi -->
+        <section>
+            <div class="input-group">
+                <label for="main-result" id="result-label">Hasil Konversi:</label>
+                <input type="text" id="main-result" readonly>
+            </div>
+        </section>
+
+        <!-- Cara Konversi Suhu -->
+        <section>
+            <div class="input-group">
+                <label for="cara-konversi">Cara Konversi:</label>
+                <input type="text" id="cara-konversi" readonly>
+            </div>
+        </section>
+        <!-- Penjelasan Rumus Konversi Suhu -->
+            <article>
+                <p>Dengan rumus ini, Anda bisa mengonversi suhu dari Celsius ke Fahrenheit.</p>
+            </article>
+        </section>
+
+        <section>
+            <h3>Daftar Rumus Konversi Suhu:</h3>
+            <button id="toggle-rumus" class="bg-aquamarine">Tampilkan Rumus Konversi Suhu</button>
+            <table id="rumus-table" style="display:none;">
+                <thead>
+                    <tr>
+                        <th>Dari Celsius</th>
+                        <th>Ke Celsius</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Daftar rumus konversi -->
+                    <tr>
+                        <td>[°F] = [°C] × 9/5 + 32</td>
+                        <td>[°C] = ([°F] - 32) × 5/9</td>
+                    </tr>
+                    <tr>
+                        <td>[K] = [°C] + 273.15</td>
+                        <td>[°C] = [K] - 273.15</td>
+                    </tr>
+                    <tr>
+                        <td>[°R] = ([°C] + 273.15) × 9/5</td>
+                        <td>[°C] = ([°R] - 491.67) × 5/9</td>
+                    </tr>
+                    <tr>
+                        <td>[°De] = (100 - [°C]) × 3/2</td>
+                        <td>[°C] = 100 - [°De] × 2/3</td>
+                    </tr>
+                    <tr>
+                        <td>[°N] = [°C] × 33/100</td>
+                        <td>[°C] = [°N] × 100/33</td>
+                    </tr>
+                    <tr>
+                        <td>[°Ré] = [°C] × 4/5</td>
+                        <td>[°C] = [°Ré] × 5/4</td>
+                    </tr>
+                    <tr>
+                        <td>[°Rø] = [°C] × 40/21 + 7.5</td>
+                        <td>[°C] = ([°Rø] - 7.5) × 21/40</td>
+                    </tr>
+                    <!-- Rumus untuk Fahrenheit, Kelvin, Rankine, Delisle, Newton, Réaumur, Rømer -->
+                    <tr>
+                        <td>[°F] = ([°F] - 32) × 5/9</td>
+                        <td>[°K] = [°F] × 5/9 + 459.67</td>
+                    </tr>
+                    <tr>
+                        <td>[°R] = [°F] × 459.67</td>
+                        <td>[°K] = [°R] × 5/9</td>
+                    </tr>
+                    <tr>
+                        <td>[°De] = [°F] × 5/9</td>
+                        <td>[°N] = [°F] × 11/60</td>
+                    </tr>
+                    <!-- Rumus untuk Kelvin -->
+                    <tr>
+                        <td>[°C] = [K] - 273.15</td>
+                        <td>[°F] = [K] × 9/5 - 459.67</td>
+                    </tr>
+                    <tr>
+                        <td>[°R] = [K] × 9/5</td>
+                        <td>[°N] = [K] × 33/100</td>
+                    </tr>
+                    <tr>
+                        <td>[°De] = [K] × 3/2</td>
+                        <td>[°Ré] = [K] × 4/5</td>
+                    </tr>
+                    <!-- Rumus untuk Rankine -->
+                    <tr>
+                        <td>[°C] = ([°R] - 491.67) × 5/9</td>
+                        <td>[°F] = [°R] - 459.67</td>
+                    </tr>
+                    <tr>
+                        <td>[°K] = [°R] × 5/9</td>
+                        <td>[°N] = [°R] × 33/100</td>
+                    </tr>
+                    <tr>
+                        <td>[°De] = ([°R] - 491.67) × 3/2</td>
+                        <td>[°Ré] = [°R] × 4/9</td>
+                    </tr>
+                    <!-- Rumus untuk Delisle -->
+                    <tr>
+                        <td>[°C] = 100 - [°De] × 2/3</td>
+                        <td>[°F] = 212 - [°De] × 5/9</td>
+                    </tr>
+                    <tr>
+                        <td>[°K] = 373.15 - [°De] × 3/2</td>
+                        <td>[°R] = 671.67 - [°De] × 3/2</td>
+                    </tr>
+                    <tr>
+                        <td>[°N] = 33 - [°De] × 11/50</td>
+                        <td>[°Ré] = 80 - [°De] × 1/5</td>
+                    </tr>
+                    <!-- Rumus untuk Newton -->
+                    <tr>
+                        <td>[°C] = [°N] × 100/33</td>
+                        <td>[°F] = [°N] × 9/11 + 32</td>
+                    </tr>
+                    <tr>
+                        <td>[°K] = [°N] × 33/100 + 273.15</td>
+                        <td>[°R] = [°N] × 8/11 + 491.67</td>
+                    </tr>
+                    <tr>
+                        <td>[°De] = 33 - [°N] × 5/11</td>
+                        <td>[°Ré] = [°N] × 4/9</td>
+                    </tr>
+                    <!-- Rumus untuk Réaumur -->
+                    <tr>
+                        <td>[°C] = [°Ré] × 5/4</td>
+                        <td>[°F] = [°Ré] × 9/4 + 32</td>
+                    </tr>
+                    <tr>
+                        <td>[°K] = [°Ré] × 5/4 + 273.15</td>
+                        <td>[°R] = [°Ré] × 5/4 + 491.67</td>
+                    </tr>
+                    <tr>
+                        <td>[°De] = 80 - [°Ré] × 1/5</td>
+                        <td>[°N] = [°Ré] × 33/80</td>
+                    </tr>
+                    <!-- Rumus untuk Rømer -->
+                    <tr>
+                        <td>[°C] = ([°Rø] - 7.5) × 21/40</td>
+                        <td>[°F] = ([°Rø] - 7.5) × 24/7 + 32</td>
+                    </tr>
+                    <tr>
+                        <td>[°K] = ([°Rø] - 7.5) × 40/21 + 273.15</td>
+                        <td>[°R] = ([°Rø] - 7.5) × 24/7 + 491.67</td>
+                    </tr>
+                    <tr>
+                        <td>[°De] = 60 - [°Rø] × 2/9</td>
+                        <td>[°N] = ([°Rø] - 7.5) × 35/22 + 7.5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+
+    <footer>
+        <p>DIBUAT OLEH DIOFANI ALBIR</p>
+    </footer>
+
+    <!-- Menghubungkan ke file JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
